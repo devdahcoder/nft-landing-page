@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import MainSectionText from './MainSectionText';
 import ImageContainer from './ImageContainer';
-import firstNft from '../Images/firstnft.png';
-import secondNft from '../Images/secondnft.png';
-import thirdNft from '../Images/thirdnft.png';
-import fifthNft from '../Images/fifthnft.png'
+import { imageSlider } from '../constant/imageslider.js';
 
 
 {/* <ImageContainer imageLink={firstNft} />
@@ -12,12 +9,12 @@ import fifthNft from '../Images/fifthnft.png'
                 <ImageContainer imageLink={thirdNft} />
                 <ImageContainer imageLink={fifthNft} /> */}
 
-                const CAROUSEL_VALUE = 3;
+const CAROUSEL_VALUE = 3;
 
 const MainSection = () => {
 
-    // const [currentIndex, setCurrentIndex] = useState(CAROUSEL_VALUE);
-    // const [translateValue, setTranslateValue] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(CAROUSEL_VALUE);
+    const [translateValue, setTranslateValue] = useState(0);
 
     // const goToPrevSlide = () => {
     //     if (currentIndex === CAROUSEL_VALUE) return;
@@ -53,10 +50,10 @@ const MainSection = () => {
                         // }} 
                     >
                         {
-                            products.map((item: Record<string, any>, index: number) => {
+                            imageSlider && imageSlider.map((images, index) => {
                                 return (
                                     <div key={index} className="flex w-full min-w-[260px]">
-                                        <AllProductItem item={item} />
+                                        <ImageContainer props={images} />
                                     </div>
                                 )
                             })
